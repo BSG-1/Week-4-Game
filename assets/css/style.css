@@ -1,9 +1,36 @@
+/*Background image*/
 body {
-	background-image: 
-	repeat: false;
+	background-image: url("../images/hypnotize.png");
+	background-repeat: repeat;
+	background-position: center;
 }
+
+/*Panel-Headings & Body Colors*/
+
+
+/*How to play the game*/
+#blue {
+	color: blue;
+}
+#green {
+	color: green;
+} 
+#red {
+	color: red;
+}
+
+#yellow {
+	color: #EEE8AA;
+}
+
+/*Displays*/
+
+/*Crystals*/
 .thumbnail img {
 	height: 100px;
 	float: left;
 	margin-left: 70px;
 }
+
+/*Total*/
+

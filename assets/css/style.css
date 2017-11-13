@@ -1,0 +1,9 @@
+body {
+	background-image: 
+	repeat: false;
+}
+.thumbnail img {
+	height: 100px;
+	float: left;
+	margin-left: 70px;
+}

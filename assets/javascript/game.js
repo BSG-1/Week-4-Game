@@ -1,9 +1,13 @@
-$(document).ready(function(){
+$(document).ready(function(){	
 
 //Global variables
 	var numberWins = 0;
 	var numberLosses = 0;
-	// var total = 0;
+	var crystalOne = Math.floor(Math.random()*12) + 1;
+	var crystalTwo = Math.floor(Math.random()*12) + 1;
+	var crystalThree = Math.floor(Math.random()*12) + 1;
+	var crystalFour = Math.floor(Math.random()*12) + 1;
+	var total = 0;
 	var isClicked = false;
 	var userTotal = $('#userTotal')
 
@@ -29,68 +33,64 @@ $(document).ready(function(){
 	// 		$('#userTotal').html(randomBlue + randomGreen + randomRed + randomYellow);
 
 	// })
-
-	function randomCrystal(){
-		return Math.floor(Math.random()*12) + 1;
-	}
-
-	//Crystals
-	$('.gemImage').on("click", function(){
-		isClicked = true;
-
-	});
-
+	
 	//Blue
 	$('#crystalOne').on("click", function(){
-  		isClicked = true;
-  		var blue = randomCrystal();
-	 		$('#userTotal').html(blue);
+		isClicked = true;
+  		total += crystalOne
+  		userTotal.html(total);
+
+  		console.log('userTotal', userTotal.text());
+
 	});
-	 
+		console.log(crystalOne);
+	
 	//Green
 	$('#crystalTwo').on("click", function(){
-  		isClicked = true;
-  		var green = randomCrystal();
-	 		$('#userTotal').html(green);
+		isClicked = true;
+		total += crystalTwo
+		userTotal.html(total);
 	});	
-	 
+		console.log(crystalTwo);
+	
 	//Red
 	$('#crystalThree').on("click", function(){
   		isClicked = true;
-	 	var red = randomCrystal();
-	 		$('#userTotal').html(red);
+  		total += crystalThree
+  		userTotal.html(total);
 	});
+		console.log(crystalThree);
 	
 	//Yellow
 	$('#crystalFour').on("click", function(){
   		isClicked = true;
-  		var yellow = randomCrystal();
-	 		$('#userTotal').html(yellow);
+  		total += crystalFour
+  		userTotal.html(total);
 	});
+		console.log(crystalFour);
 
 //User Total/Results	
-	$(".gemImage").on("click", function(){
-	 	switch (userTotal) {
-	 		case 'plus':
-	 			var total = randomYellow + randomRed + randomGreen + randomBlue;
-	 			$('#userTotal').append(total);
-	 		break;	
-		}
-	});
+	// $(".gemImage").on("click", function(){
+	// 	if ($('#userTotal').value === 'plus') {
+	// 		userTotal.html(total);
+	// 		userTotal.append(total);
+	// 	}	
+	// });
 
-	console.log(userTotal)
+	// console.log(userTotal)
 
 //Alerts if Win/Lose
 	if (userTotal == randomNumber) {
-		console.log(userTotal = randomNumber);
 		alert("You win!");
-		$('#numberWins').html(numberWins++);
+		$('#numberWins').append(numberWins++);
 
-	} else {
+		console.log('win ', randomNumber);
+	} else if (userTotal > randomNumber){
 		alert("Sorry, you lose.");
-		$('#numberLosses').html(numberLosses++);
+		$('#numberLosses').append(numberLosses++);
+
+		console.log('lose ', randomNumber);
 	}
 
-});
 
-console.log()
+});

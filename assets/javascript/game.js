@@ -1,8 +1,8 @@
 $(document).ready(function(){	
 
 //Global variables
-	var numberWins = 0;
-	var numberLosses = 0;
+	var numberWins = 1;
+	var numberLosses = 1;
 	var crystalOne = Math.floor(Math.random()*12) + 1;
 	var crystalTwo = Math.floor(Math.random()*12) + 1;
 	var crystalThree = Math.floor(Math.random()*12) + 1;
@@ -41,6 +41,7 @@ $(document).ready(function(){
   		userTotal.html(total);
 
   		console.log('userTotal', userTotal.text());
+  		checkGame();
 
 	});
 		console.log(crystalOne);
@@ -50,6 +51,7 @@ $(document).ready(function(){
 		isClicked = true;
 		total += crystalTwo
 		userTotal.html(total);
+		checkGame();
 	});	
 		console.log(crystalTwo);
 	
@@ -58,6 +60,7 @@ $(document).ready(function(){
   		isClicked = true;
   		total += crystalThree
   		userTotal.html(total);
+  		checkGame();
 	});
 		console.log(crystalThree);
 	
@@ -66,6 +69,7 @@ $(document).ready(function(){
   		isClicked = true;
   		total += crystalFour
   		userTotal.html(total);
+		checkGame();
 	});
 		console.log(crystalFour);
 
@@ -80,17 +84,39 @@ $(document).ready(function(){
 	// console.log(userTotal)
 
 //Alerts if Win/Lose
-	if (userTotal == randomNumber) {
+
+var checkGame = function (){
+	if (total == randomNumber) {
 		alert("You win!");
-		$('#numberWins').append(numberWins++);
+		$('#numberWins').html(numberWins++);
+		resetGame();
+		$('#userTotal').empty();
 
-		console.log('win ', randomNumber);
-	} else if (userTotal > randomNumber){
+	} else if (total > randomNumber){
 		alert("Sorry, you lose.");
-		$('#numberLosses').append(numberLosses++);
-
-		console.log('lose ', randomNumber);
+		$('#numberLosses').html(numberLosses++);
+		resetGame();
+		$('#userTotal').empty();
 	}
+}
 
+var resetGame = function (){
+	alert("Try Again!");
+	//Global variables
+	numberWins;
+	numberLosses;
+	crystalOne = Math.floor(Math.random()*12) + 1;
+	crystalTwo = Math.floor(Math.random()*12) + 1;
+	crystalThree = Math.floor(Math.random()*12) + 1;
+	crystalFour = Math.floor(Math.random()*12) + 1;
+	total = 0;
+	isClicked = false;
+	userTotal = $('#userTotal')
+
+
+//Random number generator for new game
+ 	randomNumber = Math.floor(Math.random() * 120) + 19;
+ 	$('#randomNum').html(randomNumber);
+}
 
 });
